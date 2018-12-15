@@ -9,7 +9,7 @@ import com.nghiadev.mvppractice.di.component.ActivityComponent;
 import com.nghiadev.mvppractice.di.component.DaggerActivityComponent;
 import com.nghiadev.mvppractice.di.module.ActivityModule;
 
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity implements MvpView, BaseFragment.Callback {
 
     private ActivityComponent activityComponent;
 
@@ -30,4 +30,13 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected abstract void setUp();
 
+    @Override
+    public void onFragmentAttached() {
+
+    }
+
+    @Override
+    public void onFragmentDetached(String tag) {
+
+    }
 }
