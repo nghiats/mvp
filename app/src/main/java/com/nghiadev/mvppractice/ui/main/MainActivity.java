@@ -26,7 +26,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getActivityComponent().inject(this);
-        ButterKnife.bind(this);
+        setUnbinder(ButterKnife.bind(this));
         mPresenter.onAttach(this);
     }
 

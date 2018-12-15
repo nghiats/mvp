@@ -9,10 +9,13 @@ import com.nghiadev.mvppractice.di.component.ActivityComponent;
 import com.nghiadev.mvppractice.di.component.DaggerActivityComponent;
 import com.nghiadev.mvppractice.di.module.ActivityModule;
 
+import butterknife.Unbinder;
+
 public abstract class BaseActivity extends AppCompatActivity {
 
     private ActivityComponent activityComponent;
 
+    Unbinder unbinder;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -22,6 +25,16 @@ public abstract class BaseActivity extends AppCompatActivity {
                 .activityModule(new ActivityModule(this))
                 .build();
         setUp();
+    }
+
+    public void setUnbinder(Unbinder unbinder) {
+        this.unbinder = unbinder;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (unbinder != null) unbinder.unbind();
     }
 
     public ActivityComponent getActivityComponent() {

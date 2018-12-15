@@ -9,8 +9,8 @@ import dagger.Provides;
 @Module
 public class GsonModule {
 
-    @Provides
-    public Gson provideGson() {
-        return new GsonBuilder().setLenient().create();
-    }
+//    @Provides
+//    public Gson provideGson() {
+//        return new GsonBuilder().setLenient().create();
+//    }
 }

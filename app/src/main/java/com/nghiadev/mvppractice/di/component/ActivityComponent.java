@@ -2,7 +2,6 @@ package com.nghiadev.mvppractice.di.component;
 
 import com.nghiadev.mvppractice.di.PerActivity;
 import com.nghiadev.mvppractice.di.module.ActivityModule;
-import com.nghiadev.mvppractice.di.module.GsonModule;
 import com.nghiadev.mvppractice.ui.main.MainActivity;
 
 import dagger.Component;
