@@ -7,11 +7,16 @@ import android.widget.Toast;
 import com.nghiadev.mvppractice.R;
 import com.nghiadev.mvppractice.ui.BaseActivity;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends BaseActivity implements MainMvpView {
+
+    @Inject
+    MainMvpPresenter<MainMvpView> mPresenter;
 
     @BindView(R.id.btn_test)
     Button btnTest;
@@ -20,8 +25,15 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getActivityComponent().inject(this);
         ButterKnife.bind(this);
+        mPresenter.onAttach(this);
+    }
 
+    @Override
+    protected void onDestroy() {
+        mPresenter.onDetach();
+        super.onDestroy();
     }
 
     @Override
@@ -32,7 +44,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 
     @OnClick(R.id.btn_test)
     public void onViewClicked() {
-
+        mPresenter.onButtonClicked();
     }
 
     @Override
