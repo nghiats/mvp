@@ -1,6 +1,7 @@
 package com.nghiadev.mvppractice.di.module;
 
 import com.google.gson.Gson;
+import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import com.nghiadev.mvppractice.BuildConfig;
 
 import java.util.concurrent.TimeUnit;
@@ -24,6 +25,7 @@ public class RetrofitModule {
         return new Retrofit.Builder()
                 .baseUrl(BuildConfig.BASE_URL)
                 .client(client.build())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
     }

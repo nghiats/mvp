@@ -6,6 +6,7 @@ import com.nghiadev.mvppractice.data.network.model.ResponseData;
 
 import javax.inject.Inject;
 
+import io.reactivex.Single;
 import retrofit2.Call;
 
 public class AppDataManager implements DataManager{
@@ -23,7 +24,9 @@ public class AppDataManager implements DataManager{
     }
 
     @Override
-    public Call<ResponseData> login(String phoneNumber, String password) {
+    public Single<ResponseData> login(String phoneNumber, String password) {
         return mApiHelper.login(phoneNumber, password);
     }
+
+
 }
